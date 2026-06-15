@@ -6,7 +6,11 @@ const { connectDB } = require('./config/db');
 const app = express();
 connectDB();
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://shecanfoundation-portall.vercel.app', // Your exact live frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
 app.use('/api/forms', require('./routes/formRoutes'));
