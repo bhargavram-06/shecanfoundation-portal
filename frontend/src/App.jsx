@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Shield, Send, Users, LogOut, CheckCircle, AlertCircle } from 'lucide-react';
 
-const API_URL = 'http://localhost:5000/api';
+// Dynamically sets the API URL depending on whether you're previewing locally or running live
+const API_URL = window.location.hostname === 'localhost'
+  ? 'http://localhost:5000/api'
+  : 'https://she-can-backend-5rch.onrender.com/api';
 
 function App() {
   // Navigation & View States
